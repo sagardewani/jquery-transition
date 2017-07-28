@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>README</title>
+	<style>
+		header{
+			margin:20px 0 20px 0;
+			font-size:1.2em;
+			color:#5c5c5c;
+		}
+	</style>
+</head>
+<body>
+<!--
+	TRANSITIONS JavaScript README
+
+-->
+<div>
+<h1>Transition Plugin By HetroTech</h1>
+<h2>Author: Sagar Dewani</h2>
+<h3>Official Website: <a href="http://www.hetrotech.in/" target="_blank">www.hetrotech.in</a></h3>
+<h3>Official E-mail: <a href="mailto:info@hetrotech.in" target="_blank">info@hetrotech.in</a></h3>
+<h3>Personal E-mail: <a href="mailto:sagar7930@gmail.com" target="_blank">sagar7930@gmail.com</a></h3>
+<h3>Facebook <a href="https://www.facebook.com/sagar.dev.1426" target="_blank">Sagar Dewani</a></h3>
+<h3>LinkedIn <a href="https://linkedin.com/in/sagar-kumar-3420a1b2" target="_blank">Sagar Dewani</a></h3>
+</div>
+
+<ul>
+	<li>Transition Plugin is a jQuery and Javascript based plugin to dynamically set hover transitions on HTML elements.</li>
+	<li>This plugin provide you easy and convenient way to apply hover effect on element.</li>
+	<li>This plugin comes with many handy features that are just one press away from you. Just press the command keys and see the magic of plugin.</li>
+	<li>This plugin is intended to apply hover transitions effect and generate CSS stylesheet classes so that you can just copy and paste the code of CSS in your HTML file to see the effect.</li>
+	<li>This plugin is for testing before implementing your CSS styles into HTML. For actual effect you must copy the CSS code generated and paste it in your HTML file.</li>
+	<li><font color="red">Now,This plugin is not compaitible with mobile browser versions.</font></li>
+</ul>
+
+<div>
+///////////////////////////////////////////<br/>
+<br/>
+	<strong>HOW TO SETUP Transition Plugin</strong><br/>
+<br/>	
+//////////////////////////////////////////
+</div>
+
+<ul>
+	<li>
+		<header>To setup Transition plugin for your project you should include the following plugins as dependency in your project before including this plugin:</header>
+		<small>The plugin is tested with mentioned dependencies</small>
+		<ul>
+			<li type="square">jQuery 3.x</li>
+			<li type="square"> Bootstrap 3.7.x</li>
+			<li type="square">jQuery UI 1.11.x</li>
+			<li type="square">font-awesome 4.7.x</li>
+		</ul>
+	</li>	
+
+	<li>
+		<header>After including all these dependencies insert Transition plugin javascript file in your project using :</header>
+		<pre><code bgcolor="#234cca">&ltscript type="text/javascript" src="jquery.transition.min.js" &gt&lt/script&gt </code></pre>
+	</li>
+	<li>
+		<header>How To Use</header>
+		<pre><code>$.hoverTransition();</code></pre>
+		<samp>
+				&ltscript&gt
+					$.hoverTransition();
+				&lt/script&gt
+		</samp>
+		<header>You can also change the triggering key combination</header>
+		<table border="1" cellpadding="3">
+			<tr>
+				<th>Option</th>
+				<th>Example</th>
+				<th>Usage</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>modeKey</th>
+				<td><pre><code>$.hoverTransition(modeKey:'66');</code></pre></td>
+				<td><pre><code>$.hoverTransition(modeKey:'your custom key decimal value');</code></pre></td>
+				<td>This will customized the default key combination for triggering mode alert that is <kbd>ctrl+m</kbd> to <kbd>ctrl+b</kbd><br/><em>Note:this doesn't change the control key(i.e. shift/alt/ctrl).Only the combination with control keys.</em></td>
+			</tr>
+			<tr>
+				<td>sourceKey</th>
+				<td><pre><code>$.hoverTransition(sourceKey:'66');</code></pre></td>
+				<td><pre><code>$.hoverTransition(sourceKey:'your custom key decimal value');</code></pre></td>
+				<td>This will customized the default key combination for triggering CSS styles code that is <kbd>Enter</kbd> to <kbd>b</kbd><br/></td>
+			</tr>
+			<tr>
+				<td>transitionKey</th>
+				<td><pre><code>$.hoverTransition(transitionKey:'66');</code></pre></td>
+				<td><pre><code>$.hoverTransition(transitionKey:'your custom key decimal value');</code></pre></td>
+				<td>This will customized the default key combination for triggering transition that is <kbd>shift+h</kbd> to <kbd>shift+b</kbd><br/><em>Note:this doesn't change the control key(i.e. shift/alt/ctrl).Only the combination with control keys.</em></td>
+			</tr>
+		</table>
+	</li>
+	<li style="margin-top:20px;">
+		<header>How to make an element disable to be selected</header>
+		<p>You just need to add a class(d-set) to that element to make unavailable to be selected</p>
+		Example: <samp>&ltinput class = "d-set" /&gt</samp>
+	</li>	
+</ul>
+
+<div>
+////////////////////////////////////////////////<br/><br/>		 
+
+	<strong>BROWSER REQUIREMENTS FOR Transition Plugin</strong><br/><br/>
+
+///////////////////////////////////////////////
+</div>
+<ul>
+	<header>This plugin works completely and perfectly and tested on all top browser with latest version such as:(<small>this plugin may also work with some earlier versions of these broswer</small>)</header>
+	<li>MOZILLA FIREFOX(54+)</li>
+	<li>GOOGLE CHROME(58+)</li>
+	<li>Internet Explorer 10+</li>
+</ul>
+		
+<div>
+////////////////////////////////////////////////<br/><br/>		 
+
+	<strong>Transition Plugin FUNCTIONALITIES</strong><br/><br/>
+
+///////////////////////////////////////////////
+</div>
+
+<ul>
+	<header>Transition Plugin comes with varities of functionality that are listed below that can be useful to boost the designing of your project.</header>
+	<em>#### MODES ####</em><br/>
+	<strong>Transition Plugin have 1 mode</strong>
+	<table border="2" cellpadding="4">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Mode Name</th>
+				<th>#Key Combination</th>
+				<th>#Description</th>
+				<th>#Procedure</th>
+			</tr>
+		</thead>
+		<tbody>	
+		<tr id="transition_documentation">
+				<td>1</td>
+				<td><i>Set Transition</i></td>
+				<td><kbd>Shift+h</kbd></td>
+				<td><b>To Set onhover transition on the selected element</b></td>
+				<td>
+					<strong>There could be consequences of applying transition so you should have some knowledge how transitions are applied</strong>
+					<em>If you have already applied some effect then there might be no effect of these transitions on the elements</em>
+					<ol>
+						<li>First Select The Element on which you want to apply onhover effect/transition</li>
+						<li>Second Press the key combination.</li>
+						<li>Third A box will open to set the transition configuration.
+							<table border="1" cellpadding="4">
+								<thead>
+									<th>#</th>
+									<th>Transition Name</th>
+									<th>Effect</th>
+									<th>Procedure</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>none</td>
+										<td>Remove all applied hover transition(no effect on transitions already applied.)</td>
+										<td>Select the none from Select Transition type menu.</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>All</td>
+										<td>To apply your custom transition(you should have knowledge of transitions for this.)</td>
+										<td><ol>
+												<li>Select the all from Select Transition type menu.Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+												<li>Enter the transition duration.If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom transition duration</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom duration and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Enter the transition name(if you don't know refer to CSS transitions first). Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>if you want to change more than one property after hover then separate them with <em>,</em></li>
+														<li><pre><samp>Example: background-color,,color,,width,,etc...</samp></pre></li>
+													</ul>
+												</li>
+												<li>Enter the transition value(if you don't know refer to CSS transitions first). Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>if you want to change more than one property value after hover then separate them with <em>,</em></li>
+														<li><pre><samp>Example: white,,red,,500px,,etc...</samp></pre></li>
+														<li><em>Note: you may use !important to see the changes cause of overriding of styles can prevent the applied effect. However, I would not suggest using <q>!important</q> in your actual HTML layout. I have used it so that it can override the inline or higher priority CSS style properties to show the effects.</em></li>
+													</ul>
+												</li>
+												<li>Select the transition mode and press <img src="../images/circle-checkmark.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>Auto : this set "ease-in-out" transition</li>
+														<li>Linear : this set "linear" transition</li>
+														<li>Ease: this set "ease" transition</li>
+													</ul>
+												</li>
+											</ol>
+										</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Fade</td>
+										<td>To apply fade transition</td>
+										<td><ol>
+												<li>Select the fade from Select Transition type menu.Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+												<li>Enter the transition duration.If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom transition duration</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom duration and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Enter the opacity value. If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom opacity value</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom opacity value and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Select the transition mode and press <img src="../images/circle-checkmark.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>Auto : this set "ease-in-out" transition</li>
+														<li>Linear : this set "linear" transition</li>
+														<li>Ease: this set "ease" transition</li>
+													</ul>
+												</li>
+											</ol>
+										</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>Size</td>
+										<td>To apply size transition.This transition will change the size of element.</td>
+										<td><ol>
+												<li>Select the size from Select Transition type menu.Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+												<li>Enter the transition duration.If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom transition duration</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom duration and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Enter the width value in numeric(scale is px). If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom width value</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom width value and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Select the transition mode and press <img src="../images/circle-checkmark.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>Auto : this set "ease-in-out" transition</li>
+														<li>Linear : this set "linear" transition</li>
+														<li>Ease: this set "ease" transition</li>
+													</ul>
+												</li>
+											</ol>
+										</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>Move</td>
+										<td>To apply move transition. This transition will change the position of element.</td>
+										<td><ol>
+												<li>Select the move from Select Transition type menu.Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+												<li>Enter the transition duration.If you don't know about this just press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<header>To set Custom transition duration</header>
+														<li>Click on edit icon below the input box. To enable the input button</li>
+														<li>Enter the custom duration and then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/></li>
+													</ul>
+												</li>
+												<li>Enter the distance value(or movement value) in numeric(scale is px). This value must be set. Then press <img src="../images/arrow-right.png" width="16px" height="16px" alt="next"/>
+												<li>Select the movement direction and press <img src="../images/circle-checkmark.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>Left : move the element by distance value in left direction.</li>
+														<li>Right : move the element by distance value in right direction.</li>
+													</ul>
+												</li>
+												<li>Select the transition mode and press <img src="../images/circle-checkmark.png" width="16px" height="16px" alt="next"/>
+													<ul>
+														<li>Auto : this set "ease-in-out" transition</li>
+														<li>Linear : this set "linear" transition</li>
+														<li>Ease: this set "ease" transition</li>
+													</ul>
+												</li>
+											</ol>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ol>	
+				</td>
+			</tr>
+		</tbody>
+		</table>	
+		<h2>Other Functionalities</h2>
+		<table border="2" cellpadding="4">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>#Key Combination</th>
+				<th>#Description</th>
+			</tr>
+		</thead>
+		<tbody>	
+			<tr>
+				<td>1</td>
+				<td><kbd>Ctrl+m</kbd></td>
+				<td><b>To Check which mode is activated currently. An alert box will open and show the details</b></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><kbd>Enter</kbd></td>
+				<td><b>To get the stylesheet class details of selected element. This will only show the styles applied using this plugin.</b></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><kbd>Shift+h</kbd></td>
+				<td><b>To get in apply Transition or disable Transition mode</b><small>After disabling the mode you will return to normal mode</small></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><kbd>Shift+Ctrl+Alt</kbd></td>
+				<td><b>To get back in normal mode</b></td>
+			</tr>
+		</tbody>
+		</table>
+	</body>
+</html>	

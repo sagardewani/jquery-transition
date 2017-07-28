@@ -241,23 +241,23 @@ _#### MODES ####_
 
     <td>
 
-    1.  Select the all from Select Transition type menu.Then press ![next](../images/arrow-right.png)
-    2.  Enter the transition duration.If you don't know about this just press ![next](../images/arrow-right.png)
+    1.  Select the all from Select Transition type menu.Then press ![next](./images/arrow-right.png)
+    2.  Enter the transition duration.If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom transition duration</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom duration and then press ![next](../images/arrow-right.png)
-    3.  Enter the transition name(if you don't know refer to CSS transitions first). Then press ![next](../images/arrow-right.png)
+        *   Enter the custom duration and then press ![next](./images/arrow-right.png)
+    3.  Enter the transition name(if you don't know refer to CSS transitions first). Then press ![next](./images/arrow-right.png)
         *   if you want to change more than one property after hover then separate them with _,_
         *   <pre><samp>Example: background-color,,color,,width,,etc...</samp></pre>
 
-    4.  Enter the transition value(if you don't know refer to CSS transitions first). Then press ![next](../images/arrow-right.png)
+    4.  Enter the transition value(if you don't know refer to CSS transitions first). Then press ![next](./images/arrow-right.png)
         *   if you want to change more than one property value after hover then separate them with _,_
         *   <pre><samp>Example: white,,red,,500px,,etc...</samp></pre>
 
         *   _Note: you may use !important to see the changes cause of overriding of styles can prevent the applied effect. However, I would not suggest using <q>!important</q> in your actual HTML layout. I have used it so that it can override the inline or higher priority CSS style properties to show the effects._
-    5.  Select the transition mode and press ![next](../images/circle-checkmark.png)
+    5.  Select the transition mode and press ![next](./images/circle-checkmark.png)
         *   Auto : this set "ease-in-out" transition
         *   Linear : this set "linear" transition
         *   Ease: this set "ease" transition
@@ -276,20 +276,20 @@ _#### MODES ####_
 
     <td>
 
-    1.  Select the fade from Select Transition type menu.Then press ![next](../images/arrow-right.png)
-    2.  Enter the transition duration.If you don't know about this just press ![next](../images/arrow-right.png)
+    1.  Select the fade from Select Transition type menu.Then press ![next](./images/arrow-right.png)
+    2.  Enter the transition duration.If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom transition duration</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom duration and then press ![next](../images/arrow-right.png)
-    3.  Enter the opacity value. If you don't know about this just press ![next](../images/arrow-right.png)
+        *   Enter the custom duration and then press ![next](./images/arrow-right.png)
+    3.  Enter the opacity value. If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom opacity value</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom opacity value and then press ![next](../images/arrow-right.png)
-    4.  Select the transition mode and press ![next](../images/circle-checkmark.png)
+        *   Enter the custom opacity value and then press ![next](./images/arrow-right.png)
+    4.  Select the transition mode and press ![next](./images/circle-checkmark.png)
         *   Auto : this set "ease-in-out" transition
         *   Linear : this set "linear" transition
         *   Ease: this set "ease" transition
@@ -308,20 +308,20 @@ _#### MODES ####_
 
     <td>
 
-    1.  Select the size from Select Transition type menu.Then press ![next](../images/arrow-right.png)
-    2.  Enter the transition duration.If you don't know about this just press ![next](../images/arrow-right.png)
+    1.  Select the size from Select Transition type menu.Then press ![next](./images/arrow-right.png)
+    2.  Enter the transition duration.If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom transition duration</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom duration and then press ![next](../images/arrow-right.png)
-    3.  Enter the width value in numeric(scale is px). If you don't know about this just press ![next](../images/arrow-right.png)
+        *   Enter the custom duration and then press ![next](./images/arrow-right.png)
+    3.  Enter the width value in numeric(scale is px). If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom width value</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom width value and then press ![next](../images/arrow-right.png)
-    4.  Select the transition mode and press ![next](../images/circle-checkmark.png)
+        *   Enter the custom width value and then press ![next](./images/arrow-right.png)
+    4.  Select the transition mode and press ![next](./images/circle-checkmark.png)
         *   Auto : this set "ease-in-out" transition
         *   Linear : this set "linear" transition
         *   Ease: this set "ease" transition
@@ -340,18 +340,18 @@ _#### MODES ####_
 
     <td>
 
-    1.  Select the move from Select Transition type menu.Then press ![next](../images/arrow-right.png)
-    2.  Enter the transition duration.If you don't know about this just press ![next](../images/arrow-right.png)
+    1.  Select the move from Select Transition type menu.Then press ![next](./images/arrow-right.png)
+    2.  Enter the transition duration.If you don't know about this just press ![next](./images/arrow-right.png)
 
         <header>To set Custom transition duration</header>
 
         *   Click on edit icon below the input box. To enable the input button
-        *   Enter the custom duration and then press ![next](../images/arrow-right.png)
-    3.  Enter the distance value(or movement value) in numeric(scale is px). This value must be set. Then press ![next](../images/arrow-right.png)
-    4.  Select the movement direction and press ![next](../images/circle-checkmark.png)
+        *   Enter the custom duration and then press ![next](./images/arrow-right.png)
+    3.  Enter the distance value(or movement value) in numeric(scale is px). This value must be set. Then press ![next](./images/arrow-right.png)
+    4.  Select the movement direction and press ![next](./images/circle-checkmark.png)
         *   Left : move the element by distance value in left direction.
         *   Right : move the element by distance value in right direction.
-    5.  Select the transition mode and press ![next](../images/circle-checkmark.png)
+    5.  Select the transition mode and press ![next](./images/circle-checkmark.png)
         *   Auto : this set "ease-in-out" transition
         *   Linear : this set "linear" transition
         *   Ease: this set "ease" transition

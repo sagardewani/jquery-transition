@@ -2,7 +2,7 @@
  * Dset: jQuery.transition.js v1.0.0
  * ========================================================================
  * Copyright 2017 Hetrotech Private Limited.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/sagardewani/Hetrotech-Projects/blob/master/LICENSE.md)
  * ======================================================================== */
 
 
@@ -142,12 +142,12 @@
 			index: 'undefined',
 			class: 'undefined',
 		};
-		$(window).on('click',$.proxy(this.setTransitions,this)).on('keydown',$.proxy(this.onKeyDown,this));
+		$(window).on('click',$.proxy(this.setTransitions,this)).on('keydown',$.proxy($.fn.settings.onKeyDown,this)).on('keydown',$.proxy($.fn.settings.onTransitionKeyDown,this));
 		$('#d-set-next-t_task').on('click',$.proxy(this.nextTask,this));
 		$('.d-set-edit-icon').on('click',$.proxy(this.editOptions,this));
 	}
 };
-Transitions.VERSION = "1.0.0";
+Transitions.VERSION = "1.0.1";
 Transitions.plguinName = "TRANSITION";
 Transitions.AUTHOR = "Sagar Dewani";
 Transitions.WEBSITE = "http://www.hetrotech.in/"
@@ -162,73 +162,85 @@ $.fn.transition = function(options) {
 
 window.$.hoverTransition = $.fn.transition;
 
-$.fn.settings = {
+var settings = {
 	disableSelect: [$("body"), $("#wrapper"), $("html"), $("option")],
 	defSetting :{
 		transition: 0
-	},	
-	count:0
+	},
+	count:0,
+	onKeyDown: function(e){
+		var $that = this;
+		if ($that.$selected.element !== 'undefined')
+		{
+			if (e.shiftKey && e.ctrlKey && e.altKey){
+				for (var key in $.fn.settings.defSetting) {
+					if ($.fn.settings.defSetting.hasOwnProperty(key))
+						$.fn.settings.defSetting[key] = 0;
+				}
+			}
+			if (e.ctrlKey && e.which == $that.keys.modeKey) {
+				var mode = "normal";
+				for (var key in $.fn.settings.defSetting) {
+					if ($.fn.settings.defSetting.hasOwnProperty(key))
+						if ($.fn.settings.defSetting[key] == 1) 
+						mode = key;
+				}
+				alert("Activated Mode: " + mode);
+			}
+			if (e.which == $that.keys.sourceKey) {
+				$(".modal-body>pre").empty();
+				if($.fn.settings.defSetting.transition){
+					var sheet;
+					var styleSheets = $("style#d-set-stylesheet")[0].sheet ? $("style#d-set-stylesheet")[0].sheet : $("style#d-set-stylesheet")[0].styleSheet;
+					var styleSheetRules = styleSheets.rules ? styleSheets.rules : styleSheets.cssRules;
+					var len = styleSheetRules.length ? styleSheetRules.length : styleSheetRules.length;
+					var targetClass = $that.$selected.element.attr('class').split(' ');
+					var i;
+					var selectorText;
+					for(i=0;i<len;i++)
+					{
+						selectorText = styleSheetRules[i].selectorText.replace('.','');
+						if(targetClass.indexOf(selectorText) > -1)
+							$(".modal-body>pre").append("<code class=d-set style='background-color:#7fdfde;'>"+styleSheetRules[i].cssText+"</code><br/>");
+						else
+						$(".modal-body>pre").append("<code class=d-set>"+styleSheetRules[i].cssText+"</code><br/>");
+					}
+				}
+				$("#source-container").modal('show');
+			}
+			//old.apply(this,arguments);
+		}
+	},
+	onTransitionKeyDown: function(e){
+		var $that = this;
+		if ($that.$selected.element !== 'undefined')
+		{
+			if (e.shiftKey && e.which == $that.keys.transitionKey) {
+				for (var key in $.fn.settings.defSetting) {
+					if ($.fn.settings.defSetting.hasOwnProperty(key))
+						if ($.fn.settings.defSetting.transition) continue;
+					$.fn.settings.defSetting[key] = 0;
+				}
+				$.fn.settings.defSetting.transition = ($.fn.settings.defSetting.transition == 0) ? 1 : 0;
+				if ($.fn.settings.defSetting.transition == 1)
+					$("#transitions").removeClass("hide");
+				else
+					$that.setInitial();
+			}
+			//old.apply(this,arguments);
+		}
+	}
 }
+
+
+
+$.fn.settings = $.extend({}, $.fn.settings|| {},settings);
 
 $.fn.transition.defaults = {
 	transitionKey:'72',
 	sourceKey:'13',
 	modeKey:'77'
 };
-
-Transitions['constructor'].prototype.onKeyDown = function(e) {
-	var $that = this;
-	
-    if ($that.$selected.element !== 'undefined') {
-        if (e.shiftKey && e.which == $that.keys.transitionKey) {
-            for (var key in $.fn.settings.defSetting) {
-                if ($.fn.settings.defSetting.hasOwnProperty(key))
-                    if ($.fn.settings.defSetting.transition) continue;
-                $.fn.settings.defSetting[key] = 0;
-            }
-            $.fn.settings.defSetting.transition = ($.fn.settings.defSetting.transition == 0) ? 1 : 0;
-            if ($.fn.settings.defSetting.transition == 1)
-                $("#transitions").removeClass("hide");
-			else
-				$that.setInitial();
-        }
-        if (e.ctrlKey && e.which == $that.keys.modeKey) {
-            var mode = "normal";
-            for (var key in $.fn.settings.defSetting) {
-                if ($.fn.settings.defSetting.hasOwnProperty(key))
-                    if ($.fn.settings.defSetting.transition == 1)
-                    mode = "Transition";
-            }
-            alert("Activated Mode: " + mode);
-        }
-
-        if (e.shiftKey && e.ctrlKey && e.altKey) {
-            for (var key in $.fn.settings.defSetting) {
-                if ($.fn.settings.defSetting.hasOwnProperty(key))
-                    $.fn.settings.defSetting[key] = 0;
-            }
-        }
-		if (e.which == $that.keys.sourceKey) {
-			var sheet;
-			var styleSheets = $("style#d-set-stylesheet")[0].sheet ? $("style#d-set-stylesheet")[0].sheet : $("style#d-set-stylesheet")[0].styleSheet;
-			var styleSheetRules = styleSheets.rules ? styleSheets.rules : styleSheets.cssRules;
-			var len = styleSheetRules.length ? styleSheetRules.length : styleSheetRules.length;
-			var targetClass = $that.$selected.element.attr('class').split(' ');
-			var i;
-			var selectorText;
-			$(".modal-body>pre").empty();
-			for(i=0;i<len;i++)
-			{
-				selectorText = styleSheetRules[i].selectorText.replace('.','');
-				if(targetClass.indexOf(selectorText) > -1)
-					$(".modal-body>pre").append("<code class=d-set style='background-color:#7fdfde;'>"+styleSheetRules[i].cssText+"</code><br/>");
-				else
-				$(".modal-body>pre").append("<code class=d-set>"+styleSheetRules[i].cssText+"</code><br/>");
-			}
-			$("#source-container").modal('show');
-        }
-    }
-}
 
 Transitions['constructor'].prototype.setTransitions = function(e){
 		var $that = this;

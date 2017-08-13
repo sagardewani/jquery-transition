@@ -1,61 +1,60 @@
-
-			.border-blue{
-				border: 3px solid blue;
-			}
-			.d-set-edit-icon{
-				cursor:pointer;
-				margin:4px;
-			}
-			.transition-container{
-				width:350px;
-				max-height:440px;
-				min-height:160px;
-				position:fixed;
-				z-index:9999;
-				top:87px;
-				left:35%;
-				background:#ffffff;
-				border:3px solid #637AB7;
-				border-radius:8px 16px;
-			}
-			ul.d-set{
-				list-style-type:none;
-				padding:8px 16px;
-				background:#cdcdcd;
-				border-top-right-radius: 13px;
-				border-top-left-radius: 5px;
-			}
-			.transition-container header.d-set{
-				color:#616161;
-			}
-			.transition-container > div.button{
-				text-align:center;
-			}
-			img.circle-img{
-				width:42px;
-				height:42px;
-				-webkit-transition:all 0.25s ease-in-out;
-				-moz-transition:all 0.25s ease-in-out;
-				-o-transition:all 0.25s ease-in-out;
-				transition:all 0.25s ease-in-out;
-			}
-			img.circle-img:hover{
-				width:46px;
-				cursor:pointer;
-				-webkit-transition:all 0.25s ease-in-out;
-				-moz-transition:all 0.25s ease-in-out;
-				-o-transition:all 0.25s ease-in-out;
-				transition:all 0.25s ease-in-out;
-			}
-			header.d-set{
-			 text-align: center;
-			 font-weight: bold;
-			 font-size: 100%;
-			 color:crimson;
-			}
-			.pointer{
-				cursor:pointer;
-			}
-			#wrapper{
-				padding-left:0;
-			}
+.border-blue {
+    border: 3px solid blue !important;
+}
+.d-set-edit-icon {
+    cursor: pointer;
+    margin: 4px;
+}
+.transition-container {
+    width: 350px;
+    max-height: 440px;
+    min-height: 160px;
+    position: fixed;
+    z-index: 9999;
+    top: 87px;
+    left: 35%;
+    background: #ffffff;
+    border: 3px solid #637AB7;
+    border-radius: 8px 16px;
+}
+ul.d-set {
+    list-style-type: none;
+    padding: 8px 16px;
+    background: #cdcdcd;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 5px;
+}
+.transition-container header.d-set {
+    color: #616161;
+}
+.transition-container > div.button {
+    text-align: center;
+}
+img.circle-img {
+    width: 42px;
+    height: 42px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+img.circle-img:hover {
+    width: 46px;
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+header.d-set {
+    text-align: center;
+    font-weight: bold;
+    font-size: 100%;
+    color: crimson;
+}
+.pointer {
+    cursor: pointer;
+}
+#wrapper {
+    padding-left: 0;
+}

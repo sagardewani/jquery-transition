@@ -2,7 +2,7 @@
  * Dset: jQuery.transition.js v1.0.0
  * ========================================================================
  * Copyright 2017 Hetrotech Private Limited.
- * Licensed under MIT (https://github.com/sagardewani/Hetrotech-Projects/blob/master/LICENSE.md)
+ * Licensed under MIT
  * ======================================================================== */
 
 
@@ -142,9 +142,11 @@
 			index: 'undefined',
 			class: 'undefined',
 		};
-		$(window).on('click',$.proxy(this.setTransitions,this)).on('keydown',$.proxy($.fn.settings.onKeyDown,this)).on('keydown',$.proxy($.fn.settings.onTransitionKeyDown,this));
+		$(window).on('click',$.proxy(this.setTransitions,this)).off('keydown',$.fn.settings.onKeyDown).on('keydown',$.proxy($.fn.settings.onKeyDown,this)).on('keydown',$.proxy($.fn.settings.onTransitionKeyDown,this));
 		$('#d-set-next-t_task').on('click',$.proxy(this.nextTask,this));
 		$('.d-set-edit-icon').on('click',$.proxy(this.editOptions,this));
+		$.fn.settings.commands['common']();
+		$.fn.settings.commands['hover']();
 	}
 };
 Transitions.VERSION = "1.0.1";
@@ -168,6 +170,29 @@ var settings = {
 		transition: 0
 	},
 	count:0,
+	modalCreated:0,
+	commands:{
+		'common': function(){
+			var keyCode = ['alt+shift+ctrl','ctrl+m','ENTER'];
+			var keyUse = ['to go back to normal mode','to check which mode is active','to view the source generated'];
+			var i,html;
+			for(i=0;i<keyCode.length;i++)
+			{
+				html = "<li class='d-set'><pre class='d-set'><code class='d-set'><i class='d-set'>"+keyCode[i]+"</i> : "+keyUse[i]+"</code></pre></li>";
+				$('#cmdList').append(html);
+			}
+		},
+		'hover':function(){
+			var keyCode = ['shift+h','esc'];
+			var keyUse = ['to (de)activate hover transition mode','to (de)activate hover transition mode'];
+			var i,html;
+			for(i=0;i<keyCode.length;i++)
+			{
+				html = "<li class='d-set'><pre class='d-set'><code class='d-set'><i class='d-set'>"+keyCode[i]+"</i> : "+keyUse[i]+"</code></pre></li>";
+				$('#cmdList').append(html);
+			}
+		}
+	},
 	onKeyDown: function(e){
 		var $that = this;
 		if ($that.$selected.element !== 'undefined')
@@ -188,8 +213,8 @@ var settings = {
 				alert("Activated Mode: " + mode);
 			}
 			if (e.which == $that.keys.sourceKey) {
-				$(".modal-body>pre").empty();
 				if($.fn.settings.defSetting.transition){
+					$(".modal-body>pre").empty();
 					var sheet;
 					var styleSheets = $("style#d-set-stylesheet")[0].sheet ? $("style#d-set-stylesheet")[0].sheet : $("style#d-set-stylesheet")[0].styleSheet;
 					var styleSheetRules = styleSheets.rules ? styleSheets.rules : styleSheets.cssRules;
@@ -205,10 +230,19 @@ var settings = {
 						else
 						$(".modal-body>pre").append("<code class=d-set>"+styleSheetRules[i].cssText+"</code><br/>");
 					}
+					$("#source-container").modal('show');
 				}
-				$("#source-container").modal('show');
+				else if($.fn.settings.defSetting.colorify || $.fn.settings.defSetting.reposizing){
+					$(".modal-body>pre").empty();
+					$(".modal-body>pre").append("<code class=d-set>"+$that.$selected.element.attr('style')+"</code><br/>");
+					$("#source-container").modal('show');
+				}
 			}
 			//old.apply(this,arguments);
+		}
+		if(e.altKey && e.which == '72')
+		{
+			$("#cmdListContainer").toggleClass('hide');
 		}
 	},
 	onTransitionKeyDown: function(e){
@@ -227,6 +261,10 @@ var settings = {
 				else
 					$that.setInitial();
 			}
+			if(e.which == '27')
+			{
+				$that.setInitial();
+			}
 			//old.apply(this,arguments);
 		}
 	}
@@ -234,7 +272,7 @@ var settings = {
 
 
 
-$.fn.settings = $.extend({}, $.fn.settings|| {},settings);
+$.fn.settings = $.extend(true,{}, $.fn.settings|| {},settings);
 
 $.fn.transition.defaults = {
 	transitionKey:'72',
@@ -519,85 +557,89 @@ function addNewClass(element)
 
 function createControlElements()
 {
-	var html = `<div class="d-set transition-container hide" id="transitions">
-			<ul class="d-set" id="task-list">
-				<li class="d-set" id="t_type">
-					<header class="d-set">Select The Transition Type</header>
-					<select class="d-set form-control" id="select-transition">
-						<option value="none">none</option>
-						<option value="all">All</option>
-						<option value="fade">Fade</option>
-						<option value="move">Move</option>
-						<option value="size">Size</option>
-					</select>
-				</li>
-				<li class="d-set hide" id="duration">
-					<header class="d-set">Enter Transition Duration(in ms)</header>
-					<input type="number" min="0" value="350" placeholder="1second = 1000ms" class="d-set form-control" id="duration-transition" title="do next if you want auto value" disabled/>
-					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>
-				</li>
-				<li class="d-set hide" id="opacity">
-					<header class="d-set" title="enter after transition opacity">Enter Opacity</header>
-					<input type="number" min="0" max="10" class="d-set form-control" value="0" placeholder="ex:7" title="do next if you want auto value" id="opacity-value" disabled/>
-					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>
-				</li>
-				<li class="d-set hide" id="size">
-					<header class="d-set" title="enter after transition width">Enter Width(in px)</header>
-					<input type="number" min="0" class="d-set form-control" placeholder="ex:80" value="0" title="do next if you want auto value" id="size-value" disabled/>
-					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>
-				</li>
-				<li class="d-set hide" id="movement">
-					<header class="d-set" title="enter after transition move distance">Enter Distance(in px)</header>
-					<input type="number" class="d-set form-control" placeholder="ex:200" id="movement-value" required/>
-				</li>
-				<li class="d-set hide" id="custom">
-					<header class="d-set" title="define transition name">Enter Custom Transition</header>
-					<input type="text" placeholder="ex:background-color" class="d-set form-control" title="Enter custom transition property" id="custom-name" required/>
-				</li>
-				<li class="d-set hide" id="value">
-					<header class="d-set" title="define transition value">Enter Custom Transition Value</header>
-					<input type="text" placeholder="ex:red" class="d-set form-control" title="Enter custom transition property value should be in effect after transition applied" id="custom-value" required/>
-				</li>
-				<li class="d-set hide" id="direction">
-					<header class="d-set" title="select after transition direction">Select Direction</header>
-					<select class="d-set form-control" id="select-direction">
-						<option value="left">Left</option>
-						<option value="right">Right</option>
-					</select>
-				</li>
-				<li class="d-set hide" id="mode">
-					<header class="d-set" title="select transition mode">Select Transition Mode</header>
-					<select class="d-set form-control" id="transition-mode">
-						<option value="auto">Auto</option>
-						<option value="linear">Linear</option>
-						<option value="ease">Ease</option>
-					</select>
-				</li>
-			</ul>
-			<div class="d-set button">
-				<img class="d-set circle-img" src="images/arrow-right.png" id="d-set-next-t_task"/>
-			</div>
-		</div>
-		<div id="source-container" class="modal fade d-set" role="dialog">
-		  <div class="modal-dialog d-set">
+	var html = '<div class="d-set transition-container hide" id="transitions">\
+			<ul class="d-set" id="task-list">\
+				<li class="d-set" id="t_type">\
+					<header class="d-set">Select The Transition Type</header>\
+					<select class="d-set form-control" id="select-transition">\
+						<option value="none">none</option>\
+						<option value="all">All</option>\
+						<option value="fade">Fade</option>\
+						<option value="move">Move</option>\
+						<option value="size">Size</option>\
+					</select>\
+				</li>\
+				<li class="d-set hide" id="duration">\
+					<header class="d-set">Enter Transition Duration(in ms)</header>\
+					<input type="number" min="0" value="350" placeholder="1second = 1000ms" class="d-set form-control" id="duration-transition" title="do next if you want auto value" disabled/>\
+					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>\
+				</li>\
+				<li class="d-set hide" id="opacity">\
+					<header class="d-set" title="enter after transition opacity">Enter Opacity</header>\
+					<input type="number" min="0" max="10" class="d-set form-control" value="0" placeholder="ex:7" title="do next if you want auto value" id="opacity-value" disabled/>\
+					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>\
+				</li>\
+				<li class="d-set hide" id="size">\
+					<header class="d-set" title="enter after transition width">Enter Width(in px)</header>\
+					<input type="number" min="0" class="d-set form-control" placeholder="ex:80" value="0" title="do next if you want auto value" id="size-value" disabled/>\
+					<i class="d-set fa fa-fw fa-edit d-set-edit-icon"></i>\
+				</li>\
+				<li class="d-set hide" id="movement">\
+					<header class="d-set" title="enter after transition move distance">Enter Distance(in px)</header>\
+					<input type="number" class="d-set form-control" placeholder="ex:200" id="movement-value" required/>\
+				</li>\
+				<li class="d-set hide" id="custom">\
+					<header class="d-set" title="define transition name">Enter Custom Transition</header>\
+					<input type="text" placeholder="ex:background-color" class="d-set form-control" title="Enter custom transition property" id="custom-name" required/>\
+				</li>\
+				<li class="d-set hide" id="value">\
+					<header class="d-set" title="define transition value">Enter Custom Transition Value</header>\
+					<input type="text" placeholder="ex:red" class="d-set form-control" title="Enter custom transition property value should be in effect after transition applied" id="custom-value" required/>\
+				</li>\
+				<li class="d-set hide" id="direction">\
+					<header class="d-set" title="select after transition direction">Select Direction</header>\
+					<select class="d-set form-control" id="select-direction">\
+						<option value="left">Left</option>\
+						<option value="right">Right</option>\
+					</select>\
+				</li>\
+				<li class="d-set hide" id="mode">\
+					<header class="d-set" title="select transition mode">Select Transition Mode</header>\
+					<select class="d-set form-control" id="transition-mode">\
+						<option value="auto">Auto</option>\
+						<option value="linear">Linear</option>\
+						<option value="ease">Ease</option>\
+					</select>\
+				</li>\
+			</ul>\
+			<div class="d-set button">\
+				<img class="d-set circle-img" src="images/arrow-right.png" id="d-set-next-t_task"/>\
+			</div>';
+			$('body').append(html);
+			if($.fn.settings.modalCreated == 0)
+			createSourceModal();
+}
 
-			<!-- Modal content-->
-			<div class="modal-content d-set">
-			  <div class="modal-header d-set">
-				<button type="button" class="close d-set" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title d-set">CSS Classes</h4>
-			  </div>
-			  <div class="modal-body d-set">
-				<pre class="d-set"></pre>
-			  </div>
-			  <div class="modal-footer d-set">
-				<button type="button" class="btn btn-default d-set" data-dismiss="modal">Close</button>
-			  </div>
-			</div>
-
-		  </div>
-		</div>`;
-		$('body').append(html);
+function createSourceModal()
+{
+	var modal = '<div id="source-container" class="modal fade d-set" role="dialog">\
+		  <div class="modal-dialog d-set">\
+			<div class="modal-content d-set">\
+			  <div class="modal-header d-set">\
+				<button type="button" class="close d-set" data-dismiss="modal">&times;</button>\
+				<h4 class="modal-title d-set">CSS Styles</h4>\
+			  </div>\
+			  <div class="modal-body d-set">\
+				<pre class="d-set"></pre>\
+			  </div>\
+			  <div class="modal-footer d-set">\
+				<button type="button" class="btn btn-default d-set" data-dismiss="modal">Close</button>\
+			  </div>\
+			</div>\
+		</div>\
+		</div>';
+		$('body').append(modal);
+	 $.fn.settings.modalCreated = 1;
 }
 
 })(jQuery,window);
